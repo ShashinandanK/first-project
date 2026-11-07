@@ -1,7 +1,4 @@
 # My first project git project
 
-This is my first project using git and GitHub
-I am learning Git branches
-
-Learning Git branches and commits for my software engineering journey.
+This is my first website and i am building this webaite for the school where i studied. By creating this website i want my school students to track their process in academics.
 

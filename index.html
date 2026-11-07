@@ -11,47 +11,56 @@
     <aside class="sidebar">
         <h2>Campus<span>Hub</span></h2>
         <p class="menu-label">MAIN MENU</p>
+        
         <nav>
-            <a class="active" href="#">Dashboard</a>
-            <a href="#">Attendance</a>
-            <a href="#">Assignments</a>
-            <a href="#">Grades</a>
-            <a href="#">Announcements</a>
+            <a class="active" href="#dashboard">Dashboard</a>
+            <a href="#attendance">Attendance</a>
+            <a href="#assignments">Assignments</a>
+            <a href="#grades">Grades</a>
+            <a href="#announcements">Announcements</a>
         </nav>
+
         <p class="sidebar-footer">School Management Portal</p>
     </aside>
 
-    <main class="main-content">
+    <main class="main-content" id="dashboard">
         <header class="topbar">
             <div>
                 <p class="eyebrow">STUDENT WORKSPACE</p>
-                <h1>Welcome back!</h1>
+                <h1 id="welcomeHeading">Welcome back!</h1>
+                <button id="welcomeButton">Click Me</button>
                 <p class="muted">Here's your school overview.</p>
             </div>
             <div class="profile">STUDENT</div>
         </header>
 
         <section class="stats">
-            <article class="stat-card">
+            <article class="stat-card" id="attendance">
                 <p>Attendance</p>
                 <h2>92%</h2>
                 <span>Overall attendance</span>
             </article>
-            <article class="stat-card">
+            <article class="stat-card" id="assignments">
                 <p>Assignments</p>
                 <h2>04</h2>
                 <span>Pending submission</span>
             </article>
-            <article class="stat-card">
+            <article class="stat-card" id="grades">
                 <p>Average Grade</p>
                 <h2>A</h2>
                 <span>Current performance</span>
             </article>
+            <article class="stat-card" id="exams">
+                <p>Upcoming Exams</p>
+                <h2>02</h2>
+                <span>Next exam in 5 days.</span>
+            </article>
         </section>
 
-        <section class="panel">
+        <section class="panel" id="announcements">
             <p class="eyebrow">YOUR WORKSPACE</p>
             <h2>Recent announcements</h2>
+            <button id="toggleAnnouncements">Hide Announcements</button>
             <div class="announcement">
                 <h3>Welcome to CampusHub</h3>
                 <p>Your school updates will appear here.</p>
@@ -62,5 +71,62 @@
             </div>
         </section>
     </main>
+    
+
+<script>
+    // ========================================
+    // 1. NAVIGATION: Change the active menu link
+    // ========================================
+
+    const navLinks = document.querySelectorAll("nav a");
+
+    navLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+
+            navLinks.forEach(function (item) {
+                item.classList.remove("active");
+            });
+
+            this.classList.add("active");
+        });
+    });
+
+
+    // ========================================
+    // 2. ANNOUNCEMENTS: Show and hide announcements
+    // ========================================
+
+    const toggleButton = document.getElementById("toggleAnnouncements");
+    const announcementItems = document.querySelectorAll(".announcement");
+
+    toggleButton.addEventListener("click", function () {
+
+        const isVisible = announcementItems[0].style.display !== "none";
+
+        announcementItems.forEach(function (item) {
+            item.style.display = isVisible ? "none" : "block";
+        });
+
+        toggleButton.textContent = isVisible
+            ? "Show Announcements"
+            : "Hide Announcements";
+    });
+
+
+    // ========================================
+    // 3. WELCOME BUTTON: Change the heading
+    // ========================================
+
+    const welcomeButton = document.getElementById("welcomeButton");
+    const welcomeHeading = document.getElementById("welcomeHeading");
+
+    welcomeButton.addEventListener("click", function () {
+        welcomeHeading.textContent = "Welcome to CampusHub!";
+        console.log("Welcome to CampusHub!");
+    });
+
+</script>
+
+
 </body>
 </html>
